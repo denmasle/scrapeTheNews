@@ -1,0 +1,42 @@
+.jumbotron {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    padding: 0;
+    box-shadow: 10px 5px 20px 2px lightgrey;
+  }
+  
+  .jumbotron .background-image {
+    height: 100%;
+    background-image: url("https://www.addpunch.com/wp-content/uploads/2018/07/mma-training-fitpass.jpg");
+    background-size: cover;
+    background-position: top;
+  }
+  
+  .jumbotron .caption {
+    background: linear-gradient(#333, black);
+    opacity: 0.7;
+    padding-top: 5px;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .jumbotron .caption h1,
+  .jumbotron .caption p {
+    color: white;
+  }
+  
+  .jumbotron h1 {
+    font-size: 80px;
+    font-weight: 700;
+  }
+  
+  .jumbotron p {
+    font-size: 30px;
+  }
+  
+  .buttons {
+    text-align: left;
+  }

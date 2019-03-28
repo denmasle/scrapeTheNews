@@ -1,0 +1,32 @@
+<div class="jumbotron text-center">
+  <div class="background-image">
+    <div class="btn-group">
+      <a href="/" class="btn btn-light btn-lg">HOME</a>
+      <a href="/saved" class="btn btn-secondary btn-lg">SAVED</a>
+      <a href="/scrape" class="btn btn-success btn-lg">SCRAPE</a>
+    </div>
+  </div>
+  <div class="caption">
+    <h1>MMA SCRAPER</h1>
+    <p>All Articles belong to www.mmafighting.com</p>
+  </div>
+</div>
+
+{{!-- Articles --}}
+<div class="container">
+  {{#each article}}
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{this.title}}</h3>
+      </div>
+      <div class="panel-body">
+        <a href="{{this.link}}">{{this.link}}</a>
+        <form class="article-form" method="POST" action="/saved/{{this.id}}?_method=PUT">
+          <button type="submit" class="btn btn-primary mt-2 mb-3">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>

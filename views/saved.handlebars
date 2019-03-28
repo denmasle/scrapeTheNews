@@ -1,0 +1,63 @@
+<div class="jumbotron text-center">
+  <div class="background-image">
+    <div class="btn-group">
+      <a href="/" class="btn btn-light btn-lg">HOME</a>
+    </div>
+  </div>
+  <div class="caption">
+    <h1>SAVED ARTICLES</h1>
+  </div>
+</div>
+
+{{!-- Saved articles --}}
+<div class="container">
+  {{#each saved}}
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{this.title}}</h3>
+      </div>
+      <div class="panel-body">
+        <a href="{{this.link}}" id="savedLink">{{this.link}}</a>
+        <form class="navbar-form navbar-right" method="POST" action="/delete/{{this.id}}?_method=PUT">
+          <button type="button" class="btn btn-warning mt-2 mb-3" data-toggle="modal" data-target="#myModal{{this.id}}" id="addNote">Comments</button>
+          <button type="submit" class="btn btn-danger mt-2 mb-3" id="articleButton">Delete</button>
+        </form>          
+      </div>
+      {{!-- Comments display --}}
+      {{#each this.notes}}
+        <div class="panel-body">
+            {{this.body}}
+            <form class="article-form" method="POST" action="/saved/delete/{{this.id}}?_method=DELETE">
+                <button type="submit" class="btn btn-outline-danger btn-sm">Delete Comment</button>
+            </form>
+            <hr>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+{{!-- Modal --}}
+{{#each saved}}
+<div class="modal fade" id="myModal{{this.id}}" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <form class="article-form" action="/saved/notes/{{this.id}}" method="POST">
+            <div class="form-group">
+              <label for="apptNotes">Comment</label>
+              <textarea class="form-control" rows="2" cols="100" id="apptNotes" name="body" placeholder="Enter comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+          </form>
+        </div>  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+{{/each}}
